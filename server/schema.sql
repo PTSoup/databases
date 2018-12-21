@@ -13,14 +13,21 @@ CREATE TABLE users (id INT AUTO_INCREMENT PRIMARY KEY,
 CREATE TABLE messages(id INT AUTO_INCREMENT PRIMARY KEY,
   messageText VARCHAR(225),
   userId INT,
-  roomId INT
+  roomId INT,
+  FOREIGN KEY (userId) 
+    REFERENCES users(id)
+    ON DELETE CASCADE,
+  FOREIGN KEY (roomId) 
+    REFERENCES rooms(id)
+    ON DELETE CASCADE
+  
 );
 
-ALTER TABLE messages
-ADD FOREIGN KEY (userId) REFERENCES users(id);
+-- ALTER TABLE messages
+-- ADD FOREIGN KEY (userId) REFERENCES users(id);
 
-ALTER TABLE messages
-ADD FOREIGN KEY (roomId) REFERENCES rooms(id);
+-- ALTER TABLE messages
+-- ADD FOREIGN KEY (roomId) REFERENCES rooms(id);
 
 
 /* Describe your table here.*/
